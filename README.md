@@ -1,3 +1,64 @@
+# GCNv2_SLAM
+
+This is a refactoring of the GCNv2_SLAM repository. It uses up-to-date cmake, up-to-date DBoW2 and g2o libraries, supports all static and all dynamic libraries (for debugging) and 2011 era C++ for sleep, threads, namespaces, etc. It also allows direct switching between ORB and GCN feature detectors in mono, stereo and RGB-D examples.
+
+You should be able to build by running:
+
+./Build.sh <BUILD_TYPE>
+
+BUILD_TYPE can be Debug (default) or Release.
+
+## Installation
+
+The code is very particular about the versions of CUDA, Python, PyTorch and cuDNN. Incorrect versions will not work. The requirements are:
+
+CUDA 9.2
+Python 3.7
+PyTorch 1.0.1
+cuDNN 7
+
+
+##### Difference on execution against original  GCNv2_SLAM:
+
+1.  The executable location is changed to  `./Build/${build_type}/Source/Examples/Monocular/`
+
+   For instance, if you want to run mono_kitti with the default Build.sh file setting, the executable is located at `./Build/Debug/Source/Examples/Monocular/mono_kitti`
+
+2. The setting file directory is prepended with default location at `./Source/Examples/`, therefore only filename is required for the yaml files.
+
+3. Therefore, a example command for running KITTI00 dataset would be:
+
+   `./Build/Debug/Source/Examples/Monocular/mono_kitti KITTI00-02.yaml ${your_kitti_dataset_folder}/sequences/00`
+  
+4. To simplify development, if you go to the directory:
+
+   `cd ./Build/Debug/Source/Examples/Monocular`
+   
+   You can run the code from:
+   
+   `./mono_kitti KITTI00-02.yaml ${your_kitti_dataset_folder}/sequences/00`
+  
+   You can recompile code changes from:
+   
+   `make`
+  
+On linux it is highly recommend you get used to using valgrind. See https://www.valgrind.org/docs/manual/quick-start.html
+
+##### Other examples
+
+Suppose we wish to run `mono_tum` on the Freiburg fr1/xyz dataset. Download the data set from the repository directory (https://vision.in.tum.de/data/datasets/rgbd-dataset/download) and uncompress it to, say your `~/Downloads` directory. This should produce a directory called  `rgbd_dataset_freiburg1_xyz`.
+
+You can then run the code using:
+
+`./Build/Debug/Source/Examples/Monocular/mono_tum TUM1.yaml ~/Downloads/rgbd_dataset_freiburg1_xyz`   
+   
+Or change to the `./Build/Debug/Source/Examples/Monocular` directory and run:
+
+`./mono_tum TUM1.yaml ~/Downloads/rgbd_dataset_freiburg1_xyz`
+
+
+The original GCNv2 SLAM README is below.
+
 # GCNv2 SLAM
 
 ## Introduction
