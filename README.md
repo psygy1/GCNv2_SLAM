@@ -10,12 +10,12 @@ BUILD_TYPE can be Debug (default) or Release.
 
 ## Installation
 
-The code is very particular about the versions of CUDA, Python, PyTorch and cuDNN. Incorrect versions will not work. The requirements are:
+The code is very particular about the versions of CUDA, Python, PyTorch and cuDNN. Other versions will not work for various cryptic and undecipherable reasons. The requirements are:
 
-CUDA 9.2
-Python 3.7
-PyTorch 1.0.1
-cuDNN 7
+* CUDA 9.2
+* Python 3.7
+* PyTorch 1.0.1
+* cuDNN 7
 
 
 ##### Difference on execution against original  GCNv2_SLAM:
