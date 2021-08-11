@@ -38,6 +38,13 @@ find_package(g2o REQUIRED)
 
 # Find torch and add its antiquated cmake stuff.
 set(CONDA_PREFIX $ENV{CONDA_PREFIX})
+string(COMPARE EQUAL "${CONDA_PREFIX}" "" conda_missing)
+if (conda_missing)
+  set(CONDA_PREFIX ~/anaconda3)
+  message(STATUS "Using falback conda environment ~/anaconda3")
+else()
+  message(STATUS "Using conda environment ${CONDA_PREFIX}")
+endif()
 list(APPEND CMAKE_PREFIX_PATH "${CONDA_PREFIX}/lib/python3.7/site-packages/torch/share/cmake/Torch")  # libtorch
 find_package(Torch REQUIRED)
 message(STATUS "Torch version is: ${Torch_VERSION}")
