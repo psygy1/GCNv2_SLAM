@@ -51,8 +51,6 @@ src/Tracking.cc
 src/Viewer.cc
 )
 
-message(TORCH_LIBRARIES=${TORCH_LIBRARIES})
-
 target_link_libraries(${PROJECT_NAME}
   pangolin
   ${DBoW2_LIBS}
