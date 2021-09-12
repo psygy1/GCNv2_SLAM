@@ -44,7 +44,7 @@ public:
 
     // Update info from the last processed frame.
     void Update(Tracking *pTracker);
-
+    void SaveTextInfo(const std::string &filename);
     // Draw last processed frame.
     cv::Mat DrawFrame();
 
